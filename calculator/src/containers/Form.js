@@ -42,6 +42,10 @@ class Form extends Component {
     return this.props.formDataHandler(formPayload);
   }
 
+  isValid(){
+
+  }
+
   componentDidMount() {
     fetch("https://www.cryptocompare.com/api/data/coinlist/")
       .then(results => {

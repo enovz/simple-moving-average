@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Form from "./containers/Form";
 import List from "./containers/List";
 import Graph from "./containers/Graph";
-import getSmaDataSet from "./calculator/getSmaDataSet";
+import getSmaPoints from "./calculator/getSmaPoints";
 import "./App.css";
 
 class App extends Component {
@@ -19,8 +19,9 @@ class App extends Component {
   }
 
   doCalculation(params) {
+    console.log(params);
     this.setState({ data: params });
-    getSmaDataSet(params, this.onSuccess, this.onError);
+    getSmaPoints(params, this.onSuccess, this.onError);
   }
 
   onSuccess(smaDataSet) {
