@@ -9,13 +9,6 @@ function getSmaPoints(params, onSucess, onError) {
     SYMBOL: params.symbol,
     DATE: _DATE
   };
-
-  console.log(params.start);
-  console.log(params.end);
-  console.log(`period: ${_PERIOD}`);
-  console.log(`weigth: ${_WEIGHT}`);
-  console.log(`len:  ${query.LEN}`);
-  console.log(parse(query.DATE));
   
   fetch(
     `https://min-api.cryptocompare.com/data/histoday?fsym=${
@@ -29,11 +22,6 @@ function getSmaPoints(params, onSucess, onError) {
       let dataSet = results.Data.map(point => {
         return { close: point.close, time: point.time };
       });
-      console.log('DATA : ');
-      dataSet.forEach(el => {
-        console.log(parse(el.time));
-      });
-      console.log(dataSet);
       let smaDataPoints = calculateSmaDataPoints(dataSet, _PERIOD, _WEIGHT);
 
       onSucess(smaDataPoints);
@@ -53,9 +41,8 @@ function calculateSmaDataPoints(dataSet, _PERIOD, _WEIGHT) {
       },  0);
       all.push({
         value: (sum / _PERIOD),
-        time: dataSet[index+_PERIOD].time
+        time: parse(dataSet[index+_PERIOD].time)
       });
-      console.log(`calculated : ${parse(dataSet[index+_PERIOD].time)} to ${sum/_PERIOD}` );
     }
     counter++;
     return all;
@@ -81,19 +68,9 @@ function parse(unix_timestamp) {
   //return formattedTime;
   //let date = new Date(formattedTime);
   //let dt = new Date(date.valueOf() + date.getTimezoneOffset() * 60000);
-  return date;
+  return date.toUTCString();
   
 }
-/*
-function getWeekDays(dataSet) {
-  return dataSet.reduce((all, item) => {
-    let dt = new Date(item.time);
-    if (dt.getDay() === 6 || dt.getDay() === 0) {
-      all.push(item);
-    }
-    return all;
-  }, []);
-}
-*/
+
 
 export default getSmaPoints;

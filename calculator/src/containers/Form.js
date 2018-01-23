@@ -37,13 +37,18 @@ class Form extends Component {
     const formPayload = {
       symbol: this.state.coin,
       start: this.state.start.clone(),
-      end: this.state.end.clone(),
+      end: this.state.end.clone()
     };
-    return this.props.formDataHandler(formPayload);
-  }
+    if(!valid(formPayload)){
+      return alert("Invalid Form");
+    }
+    else{
+      return this.props.formDataHandler(formPayload);
+    }
 
-  isValid(){
-
+    function valid(form) {
+      return moment(form.start).isBefore(form.end);
+    }
   }
 
   componentDidMount() {

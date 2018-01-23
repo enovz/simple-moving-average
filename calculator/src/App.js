@@ -47,7 +47,8 @@ class App extends Component {
       <div>
         <h3>Hello from App</h3>
         <Form formDataHandler={this.doCalculation} />
-        <Graph />
+        <List dataSet = {this.state.dataSet}/>
+        <Graph dataSet={this.state.dataSet}/>
       </div>
     );
   }

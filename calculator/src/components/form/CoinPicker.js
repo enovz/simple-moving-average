@@ -4,8 +4,10 @@ import Coin from "./Coin";
 class CoinPicker extends Component {
 
   render() {
+    let i =0;
     let coins = this.props.coins.map(coin => {
-      return <Coin key={coin.Id} symbol={coin.Symbol} />;
+      i++;
+      return <Coin key={i} symbol={coin.Symbol} />;
     });
     return (
       <select
