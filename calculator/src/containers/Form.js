@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import CoinPicker from "../components/form/CoinPicker";
+import createApi from "../api/createApi";
 import "react-datepicker/dist/react-datepicker.css";
 import "../styles/From.css";
 
@@ -52,18 +53,10 @@ class Form extends Component {
   }
 
   componentDidMount() {
-    var proxy = "https://cors-anywhere.herokuapp.com/";
-    var ulr = "www.cryptocompare.com/api/data/coinlist/";
-    var options = {
-      method: "POST",
-      mode: "cors", // or without this line
-      redirect: "follow",
-      headers: {
-        "content-type": "application/json"
-      }
-    };
+    let url = "www.cryptocompare.com/api/data/coinlist/";
+    let api = createApi(url);
 
-    fetch("https://www.cryptocompare.com/api/data/coinlist/", options)
+    fetch(api.url, api.options)
       .then(results => {
         return results.json();
       })
