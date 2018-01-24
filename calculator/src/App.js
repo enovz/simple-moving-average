@@ -23,7 +23,6 @@ class App extends Component {
   }
 
   doCalculation(params) {
-    console.log(params);
     //this.setState({ data: params });
     this.setState(prevState => {
       return {
@@ -38,7 +37,7 @@ class App extends Component {
   }
 
   onSuccess(smaDataSet) {
-    console.log(smaDataSet);
+    
     //this.setState({ dataSet: smaDataSet });
     this.setState(prevState => {
       return {
@@ -52,7 +51,6 @@ class App extends Component {
   }
 
   onError(error) {
-    console.log(error);
     let codes = {
       404: {
         message: "What?"

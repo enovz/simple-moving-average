@@ -40,7 +40,7 @@ function calculateSmaDataPoints(dataSet, _PERIOD, _WEIGHT) {
         return a;
       },  0);
       all.push({
-        value: (sum / _PERIOD),
+        value: (sum / _PERIOD).Fixed(2),
         time: parse(dataSet[index+_PERIOD].time)
       });
     }
@@ -54,7 +54,6 @@ function calculateSmaDataPoints(dataSet, _PERIOD, _WEIGHT) {
 function parse(unix_timestamp) {
   var date = new Date(unix_timestamp * 1000);
   return date.toString().split(" ").slice(0, 4).join(" ");
-  //return date.toUTCString();
 }
 
 
