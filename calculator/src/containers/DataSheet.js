@@ -17,8 +17,8 @@ class DataSheet extends Component {
     });
     return (
       <div className="DataSheet" style={{ display: this.props.display }}>
-        <span className="right">Date</span>
         <span className="left">Value</span>
+        <span className="right">Date</span>
         <hr />
         {dataItems}
       </div>
