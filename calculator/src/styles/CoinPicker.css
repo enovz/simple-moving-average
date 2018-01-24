@@ -1,0 +1,15 @@
+.CoinPicker {
+  font-family: "Open Sans Condensed", arial, sans;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+.CoinPicker select {
+  width: 50%;
+  background-color: green;
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+}

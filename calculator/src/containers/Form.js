@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import moment from "moment";
 import CoinPicker from "../components/form/CoinPicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "../styles/From.css";
 
 class Form extends Component {
   constructor(props) {
@@ -39,10 +40,9 @@ class Form extends Component {
       start: this.state.start.clone(),
       end: this.state.end.clone()
     };
-    if(!valid(formPayload)){
+    if (!valid(formPayload)) {
       return alert("Invalid Form");
-    }
-    else{
+    } else {
       return this.props.formDataHandler(formPayload);
     }
 
@@ -66,23 +66,27 @@ class Form extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleFormSubmit}>
+      <form className="Form" onSubmit={this.handleFormSubmit}>
+      <h2>SMA Calculator</h2>
+      <p>Symbol</p>
         <CoinPicker
           coins={this.state.coins}
           coin={this.state.coin}
           onChange={this.handleCoinSelect}
         />
+        <p>Start</p>
         <DatePicker
           dateFormat="YYYY/MM/DD"
           selected={this.state.start}
           onChange={this.handleStartSelect}
         />
+        <p>End</p>
         <DatePicker
           dateFormat="YYYY/MM/DD"
           selected={this.state.end}
           onChange={this.handleEndSelect}
         />
-        <input type="submit" className="btnClass" value="Submit" />
+        <input type="submit" value="Calculate" />
       </form>
     );
   }
