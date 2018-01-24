@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import "../../styles/Loading.css";
 
 class Loading extends Component {
-  constructor(props) {
-    super(props);
-  }
-  //{
   render() {
     return (
       <div className="spinner" style={{ display: this.props.display }}>
