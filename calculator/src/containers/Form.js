@@ -52,7 +52,18 @@ class Form extends Component {
   }
 
   componentDidMount() {
-    fetch("https://www.cryptocompare.com/api/data/coinlist/")
+    var proxy = "https://cors-anywhere.herokuapp.com/";
+    var ulr = "www.cryptocompare.com/api/data/coinlist/";
+    var options = {
+      method: "POST",
+      mode: "cors", // or without this line
+      redirect: "follow",
+      headers: {
+        "content-type": "application/json"
+      }
+    };
+
+    fetch("https://www.cryptocompare.com/api/data/coinlist/", options)
       .then(results => {
         return results.json();
       })
@@ -67,8 +78,8 @@ class Form extends Component {
   render() {
     return (
       <form className="Form" onSubmit={this.handleFormSubmit}>
-      <h2>SMA Calculator</h2>
-      <p>Symbol</p>
+        <h2>SMA Calculator</h2>
+        <p>Symbol</p>
         <CoinPicker
           coins={this.state.coins}
           coin={this.state.coin}
