@@ -89,7 +89,6 @@ class App extends Component {
     }
 
     function onLoading() {
-      console.log("loading");
       return (
         <div className="App">
           <Form formDataHandler={this.doCalculation} />
@@ -99,7 +98,6 @@ class App extends Component {
     }
 
     function onResult() {
-      console.log("results");
       return (
         <div className="App">
           <Form formDataHandler={this.doCalculation} />

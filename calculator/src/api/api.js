@@ -18,6 +18,11 @@ function get(endpoint) {
     }
   };
 
+  return doFetch(url, options);
+}
+
+function doFetch(url, options) {
+  
   return fetch(url, options)
     .then(response => {
       if (response.ok) {
