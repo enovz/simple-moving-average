@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import CoinPicker from "../components/form/CoinPicker";
-import createApi from "../api/createApi";
+import api from "../api/api";
 import "react-datepicker/dist/react-datepicker.css";
 import "../styles/From.css";
 
@@ -54,14 +54,10 @@ class Form extends Component {
 
   componentDidMount() {
     let url = "www.cryptocompare.com/api/data/coinlist/";
-    let api = createApi(url);
-
-    fetch(api.url, api.options)
+    api
+      .get(url)
       .then(results => {
-        return results.json();
-      })
-      .then(parsed => {
-        let coins = Object.values(parsed.Data).map(coin => {
+        let coins = Object.values(results.Data).map(coin => {
           return { Id: coin.Id, Symbol: coin.Symbol };
         });
         this.setState({ coins: coins });

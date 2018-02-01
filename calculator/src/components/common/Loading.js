@@ -4,7 +4,7 @@ import "../../styles/Loading.css";
 class Loading extends Component {
   render() {
     return (
-      <div className="spinner" style={{ display: this.props.display }}>
+      <div className="spinner">
         <div className="rect1" />
         <div className="rect2" />
         <div className="rect3" />

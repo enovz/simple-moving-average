@@ -37,11 +37,9 @@ class Graph extends Component {
         {
           label: "SMA",
           data: data,
-          borderColor: [
-            "rgb(44, 187, 187)",
-          ],
+          borderColor: ["rgb(44, 187, 187)"],
           borderWidth: 1,
-          fill:false
+          fill: false
         }
       ]
     };
@@ -50,9 +48,8 @@ class Graph extends Component {
 
   render() {
     return (
-      <div className="Graph" style={{ display: this.props.display }}>
-        <Line 
-        data={this.createLine(this.props.dataSet)}/>
+      <div className="Graph">
+        <Line data={this.createLine(this.props.dataSet)} />
       </div>
     );
   }

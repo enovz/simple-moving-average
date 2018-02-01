@@ -16,7 +16,7 @@ class DataSheet extends Component {
       return <DataItem key={id} date={data.time} value={data.value} />;
     });
     return (
-      <div className="DataSheet" style={{ display: this.props.display }}>
+      <div className="DataSheet">
         <span className="left">Value</span>
         <span className="right">Date</span>
         <hr />
